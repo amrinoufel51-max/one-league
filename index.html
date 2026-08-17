@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Sadara | دوري التوقعات</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div id="user-badge">ID: <span id="badge-id">---</span></div>
+
+    <!-- شاشة البداية -->
+    <div id="welcome-screen" class="screen active">
+        <h2 style="color: #7b2cbf; margin-bottom: 20px;">Sadara | دوري التوقعات</h2>
+        <input type="text" id="username-input" class="input-box" placeholder="أدخل اسمك الكريم...">
+        <br>
+        <button id="start-btn" class="btn-start" disabled>Start</button>
+    </div>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="main-screen" class="screen">
+        <div class="cards-container">
+            <div class="card" onclick="openScreen('matches-screen')"><h3>⚽ المباريات</h3></div>
+            <div class="card" onclick="openScreen('leaderboard-screen')"><h3>🏆 الترتيب</h3></div>
+        </div>
+    </div>
+
+    <!-- صفحة المباريات -->
+    <div id="matches-screen" class="sub-screen">
+        <button class="btn-back" onclick="openScreen('main-screen')">← رجوع</button>
+        <h2 style="color: #7b2cbf; margin-bottom: 20px;">مباريات اليوم</h2>
+        <div id="deadline-notice" style="color: #d90429; font-weight: bold; margin-bottom: 15px; text-align: center;"></div>
+        <div id="matches-container"></div>
+    </div>
+
+    <!-- صفحة الترتيب -->
+    <div id="leaderboard-screen" class="sub-screen">
+        <button class="btn-back" onclick="openScreen('main-screen')">← رجوع</button>
+        <h2 style="color: #7b2cbf; margin-bottom: 15px;">جدول الصدارة</h2>
+        <div id="leaderboard-list" style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #e0d0ff;">
+            <p>جاري تحميل الترتيب...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
