@@ -1,1 +1,23 @@
+name: Update Leaderboard
+on:
+  push:
+    paths:
+      - 'results.json'
 
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with: {python-version: '3.x'}
+      - name: Run calculation script
+        run: python calculate_points.py
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'bot'
+          git config --global user.email 'bot@email.com'
+          git add leaderboard.json
+          git commit -m "Update leaderboard automatically"
+          git push
