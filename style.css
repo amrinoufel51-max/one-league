@@ -1,0 +1,225 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* الخلفية المتحركة (تموجات ونقاط بنفسجية) */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle, rgba(128, 0, 128, 0.08) 10%, transparent 10%),
+                linear-gradient(135deg, rgba(245, 240, 255, 0.8) 0%, rgba(255, 255, 255, 1) 100%);
+    background-size: 30px 30px, 100% 100%;
+    animation: waveMove 15s ease infinite alternate;
+}
+
+@keyframes waveMove {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+    100% {
+        background-position: 50px 50px, 0 0;
+    }
+}
+
+/* الحاويات العامة للشاشات */
+.screen {
+    display: none;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* شاشة البداية */
+#welcome-screen {
+    text-align: center;
+}
+
+.input-box {
+    width: 100%;
+    max-width: 350px;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.input-box:focus {
+    border-color: #7b2cbf;
+}
+
+.btn-start {
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #ccc;
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-start.active {
+    background-color: #2ec4b6; /* أخضر جميل */
+}
+
+.btn-start.active:hover {
+    background-color: #25a18e;
+}
+
+/* الـ ID المتحرك في أعلى اليمين */
+#user-badge {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #7b2cbf;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(123, 44, 191, 0.3);
+    z-index: 1000;
+    display: none;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* شاشة الـ 2 Cards الرئيسية */
+.cards-container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    justify-content: center;
+}
+
+.card {
+    flex: 1;
+    background: white;
+    border: 2px solid #f0e6ff;
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(123, 44, 191, 0.05);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #7b2cbf;
+    box-shadow: 0 12px 25px rgba(123, 44, 191, 0.15);
+}
+
+.card h3 {
+    color: #7b2cbf;
+    font-size: 18px;
+}
+
+/* صفحات تفاصيل المباريات والجدول */
+.sub-screen {
+    display: none;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.sub-screen.active {
+    display: block;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: #7b2cbf;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* تنسيق المباريات وأزرار التوقع */
+.match-item {
+    background: white;
+    border: 1px solid #e0d0ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.match-teams {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.prediction-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.pred-btn {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #7b2cbf;
+    background: white;
+    color: #7b2cbf;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.pred-btn.selected {
+    background: #7b2cbf;
+    color: white;
+}
+
+.btn-send-pred {
+    width: 100%;
+    padding: 10px;
+    background: #7b2cbf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-send-pred:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
